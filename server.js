@@ -1,4 +1,5 @@
 const express = require("express");
+const res = require("express/lib/response");
 const http = require("http");
 
 const app = express();
@@ -7,8 +8,16 @@ app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (request, response) => {
-  response.end("<h1>This is from express js<h1>");
+app.set("views", "views");
+app.set("view engine", "ejs");
+
+app.post("/create-item", (req, res) => {
+  console.log(req.body);
+  return res.json({ test: "success" });
+});
+
+app.get("/", (req, res) => {
+  res.render("harid");
 });
 
 const server = http.createServer(app);
