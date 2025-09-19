@@ -20,12 +20,6 @@
     />
   </head>
   <style>
-    .container_main {
-      max-width: 968px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
     body {
       font-family: "Inter", sans-serif;
       background-color: #fafafa;
@@ -34,106 +28,304 @@
 
   <body>
     <div>
-      <!-- Main page boshlandi -->
-      <div class="container_main">
-        <div class="flex items-center justify-between">
+      <!-- Main  -->
+      <div class="container_main flex justify-center gap-20">
+        <div
+          class="left_frame bg-white w-[400px] flex justify-center items-start py-10"
+        >
           <div>
-            <h1 class="text-[48px] tracking-[.05em] font-bold">
-              I’m Rayan Adlrdard <br />
-              <span class="text-[#ffb400]">Front-end </span>Developer
-            </h1>
-            <p class="w-[388px] text-[#767676] leading-[24px]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et,
-              volutpat feugiat placerat lobortis. Natoque rutrum semper sed
-              suspendisse nunc lectus.
-            </p>
-            <button class="w-[154px] h-[51px] bg-[#ffb400] mt-[50px]">
-              HIRE ME <i class="fa-solid fa-arrow-right text-[14px]"></i>
-            </button>
+            <div class="flex justify-center items-center flex-col">
+              <div
+                class="w-[270px] h-[270px] rounded-full bg-gray-100 overflow-hidden"
+              >
+                <img src="/man.png" alt="" class="" />
+              </div>
+              <div class="mt-5 text-xl text-center">
+                <h3><%=user.name%></h3>
+                <p class="mt-3 text-gray-600"><%=user.profession%></p>
+                <div class="flex gap-3 mt-6">
+                  <span class="inline-block w-8 h-8 bg-orange-400 rounded-full">
+                    <i class="fa-solid fa-paper-plane text-sm"></i>
+                  </span>
+                  <span class="inline-block w-8 h-8 bg-orange-400 rounded-full">
+                    <i class="fa-brands fa-twitter"></i>
+                  </span>
+                  <span class="inline-block w-8 h-8 bg-orange-400 rounded-full">
+                    <i class="fa-brands fa-youtube"></i>
+                  </span>
+                  <span class="inline-block w-8 h-8 bg-orange-400 rounded-full">
+                    <i class="fa-brands fa-instagram"></i>
+                  </span>
+                  <span class="inline-block w-8 h-8 bg-orange-400 rounded-full">
+                    <i class="fa-brands fa-github"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <hr class="inline-block w-full bg-orange-500 mt-5" />
+            <div>
+              <ul class="mt-6 gap-3 flex flex-col">
+                <li class="flex justify-between items-center">
+                  <span class="inline-block bg-orange-400 px-3 py-1"
+                    >Age:
+                  </span>
+                  <span>24</span>
+                </li>
+                <li class="flex justify-between items-center">
+                  <span class="inline-block bg-orange-400 px-3 py-1"
+                    >Residence:
+                  </span>
+                  <span>BD</span>
+                </li>
+                <li class="flex justify-between items-center">
+                  <span class="inline-block bg-orange-400 px-3 py-1"
+                    >Freelance:
+                  </span>
+                  <span>Available</span>
+                </li>
+                <li class="flex justify-between items-center">
+                  <span class="inline-block bg-orange-400 px-3 py-1"
+                    >Address:
+                  </span>
+                  <span
+                    ><%=user.address["country"]%>,
+                    <%=user.address["city"]%></span
+                  >
+                </li>
+              </ul>
+            </div>
+            <hr class="inline-block w-full bg-orange-500 mt-5" />
+            <div>
+              <h1 class="text-xl">Languages</h1>
+              <div class="my-4">
+                <span
+                  class="inline-block w-full flex justify-between items-center"
+                >
+                  <p class="text-gray-500 text-md"><%=user.languages[0]%></p>
+                  <p>100%</p>
+                </span>
+                <span
+                  class="inline-block w-full rounded-full bg-orange-500 h-2"
+                ></span>
+              </div>
+              <div class="my-4">
+                <span
+                  class="inline-block w-full flex justify-between items-center"
+                >
+                  <p class="text-gray-500 text-md"><%=user.languages[1]%></p>
+                  <p>100%</p>
+                </span>
+                <span
+                  class="inline-block w-full rounded-full bg-orange-500 h-2"
+                ></span>
+              </div>
+            </div>
+            <hr class="inline-block w-full bg-orange-500 mt-5" />
+            <div>
+              <h1 class="text-xl">Skills</h1>
+              <div class="my-4">
+                <span
+                  class="inline-block w-full flex justify-between items-center"
+                >
+                  <p class="text-gray-500 text-md">
+                    <%=user.skills["tech"][0]%>
+                  </p>
+                  <p>100%</p>
+                </span>
+                <span
+                  class="inline-block w-full rounded-full bg-orange-500 h-2"
+                ></span>
+              </div>
+              <div class="my-4">
+                <span
+                  class="inline-block w-full flex justify-between items-center"
+                >
+                  <p class="text-gray-500 text-md">
+                    <%=user.skills["tech"][1]%>
+                  </p>
+                  <p>100%</p>
+                </span>
+                <span
+                  class="inline-block w-full rounded-full bg-orange-500 h-2"
+                ></span>
+              </div>
+              <div class="my-4">
+                <span
+                  class="inline-block w-full flex justify-between items-center"
+                >
+                  <p class="text-gray-500 text-md">
+                    <%=user.skills["tech"][2]%>
+                  </p>
+                  <p>100%</p>
+                </span>
+                <span
+                  class="inline-block w-full rounded-full bg-orange-500 h-2"
+                ></span>
+              </div>
+              <div class="my-4">
+                <span
+                  class="inline-block w-full flex justify-between items-center"
+                >
+                  <p class="text-gray-500 text-md">
+                    <%=user.skills["tech"][3]%>
+                  </p>
+                  <p>100%</p>
+                </span>
+                <span
+                  class="inline-block w-full rounded-full bg-orange-500 h-2"
+                ></span>
+              </div>
+              <div class="my-4">
+                <span
+                  class="inline-block w-full flex justify-between items-center"
+                >
+                  <p class="text-gray-500 text-md">
+                    <%=user.skills["front"][0]%>
+                  </p>
+                  <p>100%</p>
+                </span>
+                <span
+                  class="inline-block w-full rounded-full bg-orange-500 h-2"
+                ></span>
+              </div>
+            </div>
+            <hr class="inline-block w-full bg-orange-500 mt-5" />
+            <div>
+              <h1 class="text-xl">Extra Skills</h1>
+              <div class="my-4">
+                <span class="inline-block w-full flex items-center gap-3">
+                  <img src="/icons.png" alt="" />
+                  <p class="text-gray-500 text-md"><%=user.extra_skills[0]%></p>
+                </span>
+              </div>
+              <div class="my-4">
+                <span class="inline-block w-full flex items-center gap-3">
+                  <img src="/icons.png" alt="" />
+                  <p class="text-gray-500 text-md"><%=user.extra_skills[1]%></p>
+                </span>
+              </div>
+            </div>
+            <hr class="inline-block w-full bg-orange-500 mt-5" />
+            <div class="w-full flex justify-center items-center mt-3">
+              <a href="#" class="uppercase text-xl px-3 py-3 bg-orange-500"
+                >Download cv</a
+              >
+            </div>
           </div>
-          <img src="/man.png" alt="" />
         </div>
-        <!-- Main page tugadi -->
-        <!-- Ikkinchi page boshlandi -->
-        <div class="bg-">
-          <div class="text-center m-auto w-[500px]">
-            <h1 class="text-[32px] text-[#2B2B2B] font-bold">My Services</h1>
-            <p class="text-[15px] text-[#767676] mt-[15px]">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
-              doloribus consequuntur commodi, labore quis dolor, quam velit
-              rerum ad odio sapiente?
-            </p>
-          </div>
-          <div class="flex items-center justify-between mt-[40px]">
-            <div class="w-[310px] h-[225px] bg-white text-center">
-              <img
-                class="m-auto pt-[20px]"
-                src="/icons8-frontend-64.png"
-                alt=""
-              />
-              <h4 class="text-[18px] pt-[20px]">uI/uX design</h4>
-              <h5 class="text-[15px] pt-[10px] text-[#767676]">
-                Mobile app, website design
-              </h5>
-            </div>
-            <div class="w-[310px] h-[225px] bg-white text-center">
-              <img
-                class="m-auto pt-[20px]"
-                src="/icons8-frontend-64.png"
-                alt=""
-              />
-              <h4 class="text-[18px] pt-[20px]">sound design</h4>
-              <h5 class="text-[15px] pt-[10px] text-[#767676]">
-                Voice Over, Beat Making
-              </h5>
-            </div>
-            <div class="w-[310px] h-[225px] bg-white text-center">
-              <img
-                class="m-auto pt-[20px]"
-                src="/icons8-frontend-64.png"
-                alt=""
-              />
-              <h4 class="text-[18px] pt-[20px]">Web Development</h4>
-              <h5 class="text-[15px] pt-[10px] text-[#767676]">
-                Blog, E-Commerce
-              </h5>
-            </div>
-          </div>
-          <div class="flex items-center justify-between mt-[20px]">
-            <div class="w-[310px] h-[225px] bg-white text-center">
-              <img
-                class="m-auto pt-[20px]"
-                src="/icons8-frontend-64.png"
-                alt=""
-              />
-              <h4 class="text-[18px] pt-[20px]">uI/uX design</h4>
-              <h5 class="text-[15px] pt-[10px] text-[#767676]">
-                Mobile app, website design
-              </h5>
-            </div>
-            <div class="w-[310px] h-[225px] bg-white text-center">
-              <img
-                class="m-auto pt-[20px]"
-                src="/icons8-frontend-64.png"
-                alt=""
-              />
-              <h4 class="text-[18px] pt-[20px]">sound design</h4>
-              <h5 class="text-[15px] pt-[10px] text-[#767676]">
-                Voice Over, Beat Making
-              </h5>
-            </div>
-            <div class="w-[310px] h-[225px] bg-white text-center">
-              <h1 class="text-[18px] pt-[60px]">Advertising</h1>
-              <p class="text-[15px] text-[#767676] pt-[20px]">
-                Lorem ipsum dolor sit amet, consecte Vitae nulla diam in ac
-                dictum a urna viverra morbi.
+        <div>
+          <div class="flex items-center justify-between">
+            <div>
+              <h1 class="text-[48px] tracking-[.05em] font-bold">
+                I’m Rayan Adlrdard <br />
+                <span class="text-[#ffb400]">Front-end </span>Developer
+              </h1>
+              <p class="w-[388px] text-[#767676] leading-[24px]">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et,
+                volutpat feugiat placerat lobortis. Natoque rutrum semper sed
+                suspendisse nunc lectus.
               </p>
-              <a
-                class="text-[12px] text-[#FFB400] mt-[15px] text-center w-[100px] inline-block font-bold"
-                href="#"
-                >ORDER NOW <i class="fa-solid fa-chevron-right"></i
-              ></a>
+              <button class="w-[154px] h-[51px] bg-[#ffb400] mt-[50px]">
+                HIRE ME <i class="fa-solid fa-arrow-right text-[14px]"></i>
+              </button>
             </div>
+            <img src="/man.png" alt="" />
+          </div>
+          <!-- Main -->
+          <!-- Ikkinchi page boshlandi -->
+          <div class="bg-">
+            <div class="text-center m-auto w-[500px]">
+              <h1 class="text-[32px] text-[#2B2B2B] font-bold">My Services</h1>
+              <p class="text-[15px] text-[#767676] mt-[15px]">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
+                doloribus consequuntur commodi, labore quis dolor, quam velit
+                rerum ad odio sapiente?
+              </p>
+            </div>
+            <div class="flex items-center justify-between mt-[40px]">
+              <div class="w-[310px] h-[225px] bg-white text-center">
+                <img
+                  class="m-auto pt-[20px]"
+                  src="/icons8-frontend-64.png"
+                  alt=""
+                />
+                <h4 class="text-[18px] pt-[20px]">UI/UX design</h4>
+                <h5 class="text-[15px] pt-[10px] text-[#767676]">
+                  Mobile app, website design
+                </h5>
+              </div>
+              <div class="w-[310px] h-[225px] bg-white text-center">
+                <img
+                  class="m-auto pt-[20px]"
+                  src="/icons8-frontend-64.png"
+                  alt=""
+                />
+                <h4 class="text-[18px] pt-[20px] capitalize">sound design</h4>
+                <h5 class="text-[15px] pt-[10px] text-[#767676]">
+                  Voice Over, Beat Making
+                </h5>
+              </div>
+              <div class="w-[310px] h-[225px] bg-white text-center">
+                <img
+                  class="m-auto pt-[20px]"
+                  src="/icons8-frontend-64.png"
+                  alt=""
+                />
+                <h4 class="text-[18px] pt-[20px]">Web Development</h4>
+                <h5 class="text-[15px] pt-[10px] text-[#767676]">
+                  Blog, E-Commerce
+                </h5>
+              </div>
+            </div>
+            <div class="flex items-center justify-between mt-[20px]">
+              <div class="w-[310px] h-[225px] bg-white text-center">
+                <img
+                  class="m-auto pt-[20px]"
+                  src="/icons8-frontend-64.png"
+                  alt=""
+                />
+                <h4 class="text-[18px] pt-[20px]">uI/uX design</h4>
+                <h5 class="text-[15px] pt-[10px] text-[#767676]">
+                  Mobile app, website design
+                </h5>
+              </div>
+              <div class="w-[310px] h-[225px] bg-white text-center">
+                <img
+                  class="m-auto pt-[20px]"
+                  src="/icons8-frontend-64.png"
+                  alt=""
+                />
+                <h4 class="text-[18px] pt-[20px]">sound design</h4>
+                <h5 class="text-[15px] pt-[10px] text-[#767676]">
+                  Voice Over, Beat Making
+                </h5>
+              </div>
+              <div class="w-[310px] h-[225px] bg-white text-center">
+                <h1 class="text-[18px] pt-[60px]">Advertising</h1>
+                <p class="text-[15px] text-[#767676] pt-[20px]">
+                  Lorem ipsum dolor sit amet, consecte Vitae nulla diam in ac
+                  dictum a urna viverra morbi.
+                </p>
+                <a
+                  class="text-[12px] text-[#FFB400] mt-[15px] text-center w-[100px] inline-block font-bold"
+                  href="#"
+                  >ORDER NOW <i class="fa-solid fa-chevron-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="right_frame w-[100px] bg-white">
+          <div class="flex justify-center items-start mt-3">
+            <img src="/contrast.png" alt="" />
+          </div>
+          <div class="flex flex-col px-7 gap-4 h-full py-[200px]">
+            <img src="/Home.png" alt="" />
+            <img src="/Service.png" alt="" />
+            <img src="/Cv.png" alt="" />
+            <img src="/Portfolio.png" alt="" />
+            <img src="/Blog.png" alt="" />
+            <img src="/Contact.png" alt="" />
           </div>
         </div>
       </div>
