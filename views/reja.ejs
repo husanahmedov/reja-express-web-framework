@@ -19,12 +19,19 @@
     <div class="w-full h-screen overflow-hidden flex items-center flex-col">
       <div class="w-[600px] min-h-[150px] border-dotted border p-6 mt-[200px]">
         <h2 class="text-center text-3xl">Reja <span class="border-b border-purple-600 border-dotted p-0" style="line-height: 0px;">Application</span></h2>
-        <form class="w-full h-auto">
+        <form class="w-full h-auto" action="/create-item" method="post">
           <div class="w-full flex justify-between gap-10">
-            <input type="text" placeholder="Add Task" class="text-xl border-b border-dotted outline-none w-full">
+            <input name="reja" type="text" placeholder="Add Task" class="text-xl border-b border-dotted outline-none w-full">
             <button type="submit" class="bg-gray-100 p-1 px-2 cursor-pointer text-xl border-b border-gray-300">Qo'shish</button>
           </div>
         </form>
+        <% items.map(function(item) { %>
+          <ul>
+            <li>
+              <%=item.reja %>
+            </li>
+          </ul>
+        <% }) %>
       </div>
     </div>
   </div>

@@ -12,11 +12,30 @@ app.set("view engine", "ejs");
 
 app.post("/create-item", (request, response) => {
   console.log(request.body);
-  return response.json({ test: "success" });
+  const new_reja = request.body.reja;
+  db.collection("plan").insertOne({ reja: new_reja }, (err, data) => {
+    if (err) {
+      console.log("ERROR: ", err);
+      response.end("Something went wrong");
+    } else {
+      response.end("successfully added");
+    }
+  });
+  return response.end("succedd");
 });
 
 app.get("/", (req, res) => {
-  res.render("reja");
+  db.collection("plan")
+    .find()
+    .toArray((err, data) => {
+      if (err) {
+        console.log("ERROR: ", err);
+        res.end("Something went error");
+      } else {
+        console.log(data);
+        res.render("reja", { items: data });
+      }
+    });
 });
 
 module.exports = app;
