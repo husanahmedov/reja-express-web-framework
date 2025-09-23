@@ -1,28 +1,30 @@
-const express = require("express");
 const http = require("http");
-const app = express();
+const mongodb = require("mongodb");
 
-app.use(express.static("public"));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+let db;
+const connectionString =
+  "mongodb+srv://roger:eEaaUF2fv1CZiuOi@reja.eeuhdxz.mongodb.net/?retryWrites=true&w=majority&appName=Reja";
 
-app.set("views", "views");
-app.set("view engine", "ejs");
+mongodb.connect(
+  connectionString,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  (error, client) => {
+    if (error) console.log("ERROR: ", error);
+    else {
+      console.log("Mongodb connnection succeed");
+      module.exports = client;
+      const app = require("./app");
+      const server = http.createServer(app);
+      let PORT = 3000;
 
-app.post("/create-item", (request, response) => {
-  console.log(request.body);
-  return response.json({ test: "success" });
-});
-
-app.get("/", (req, res) => {
-  res.render("harid");
-});
-
-const server = http.createServer(app);
-let PORT = 3000;
-
-server.listen(PORT, () => {
-  console.log(
-    `This is succesfully runned on server ${PORT} http://localhost:${PORT}`
-  );
-});
+      server.listen(PORT, () => {
+        console.log(
+          `This is succesfully runned on server ${PORT} http://localhost:${PORT}`
+        );
+      });
+    }
+  }
+);
