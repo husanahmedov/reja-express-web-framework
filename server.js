@@ -1,19 +1,30 @@
-const express = require("express");
 const http = require("http");
+const mongodb = require("mongodb");
 
-const app = express();
+let db;
+const connectionString =
+  "mongodb+srv://roger:eEaaUF2fv1CZiuOi@reja.eeuhdxz.mongodb.net/?retryWrites=true&w=majority&appName=Reja";
 
-app.use(express.static("public"));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+mongodb.connect(
+  connectionString,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  (error, client) => {
+    if (error) console.log("ERROR: ", error);
+    else {
+      console.log("Mongodb connnection succeed");
+      module.exports = client;
+      const app = require("./app");
+      const server = http.createServer(app);
+      let PORT = 3000;
 
-app.get("/", (request, response) => {
-  response.end("<h1>This is from express js<h1>");
-});
-
-const server = http.createServer(app);
-let PORT = 3000;
-
-server.listen(PORT, () => {
-  console.log("This is succesfully runned on server");
-});
+      server.listen(PORT, () => {
+        console.log(
+          `This is succesfully runned on server ${PORT} http://localhost:${PORT}`
+        );
+      });
+    }
+  }
+);
