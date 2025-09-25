@@ -11,17 +11,10 @@ app.set("views", "views");
 app.set("view engine", "ejs");
 
 app.post("/create-item", (request, response) => {
-  console.log(request.body);
   const new_reja = request.body.reja;
   db.collection("plan").insertOne({ reja: new_reja }, (err, data) => {
-    if (err) {
-      console.log("ERROR: ", err);
-      response.end("Something went wrong");
-    } else {
-      response.end("successfully added");
-    }
+    response.json(data.ops[0]);
   });
-  return response.end("succedd");
 });
 
 app.get("/", (req, res) => {
