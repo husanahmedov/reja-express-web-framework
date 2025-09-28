@@ -44,14 +44,20 @@
 //   }
 // });
 
-function countDigits(str) {
-  let count = 0;
-  for (let char of str) {
-    if (!isNaN(char) && char !== " ") {
-      count++;
-    }
-  }
-  return count;
+// function countDigits(str) {
+//   let count = 0;
+//   for (let char of str) {
+//     if (!isNaN(char) && char !== " ") {
+//       count++;
+//     }
+//   }
+//   return count;
+// }
+
+// console.log(countDigits("salom"));
+
+function checkContent(str1, str2) {
+  return str1.split("").sort().join("") === str2.split("").sort().join("");
 }
 
-console.log(countDigits("salom"));
+console.log(checkContent("salom", "lmosa"));

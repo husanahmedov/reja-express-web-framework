@@ -4,9 +4,13 @@ function itemTemplate(data) {
   console.log(data);
 
   return `
-        <li>
-            ${data.reja}
-        </li>
+          <li class="text-xl">
+              ${data.reja}
+              <span class="flex gap-3 items-center justify-between">
+                <i class="fa-solid fa-trash-can text-sm cursor-pointer text-red-600 delete-button" data-id="${data._id}"></i>
+                <i class="fa-solid fa-pen text-sm cursor-pointer text-blue-800" data-id="${data._id}"></i>
+              </span>
+          </li>
     `;
 }
 
@@ -24,6 +28,19 @@ const form = document
         createField.focus();
       })
       .catch((error) => {
-        console.log("ERROR", "Please try again later");
+        console.log("ERROR", "Please try again later", error);
       });
   });
+
+document.addEventListener("click", (event) => {
+  if (event.target.classList.contains("delete-button")) {
+    if (confirm("Are you sure to delete item?")) {
+      axios
+        .post("/delete-item", { id: event.target.getAttribute("data-id") })
+        .then((response) => {
+          event.target.parentElement.parentElement.remove();
+        })
+        .catch((error) => {});
+    }
+  }
+});

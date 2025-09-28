@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <style>
   html {
@@ -21,7 +22,7 @@
       <div class="w-[600px] min-h-[150px] border-dotted border p-6 mt-[200px]">
         <h2 class="text-center text-3xl">Reja <span class="border-b border-purple-600 border-dotted p-0"
             style="line-height: 0px;">Application</span></h2>
-        <form class="w-full h-auto" action="/create-item" method="post" id="create-form">
+        <form class="w-full h-auto mb-5" action="/create-item" method="post" id="create-form">
           <div class="w-full flex justify-between gap-10">
             <input id="create-input" name="reja" type="text" placeholder="Add Task"
               class="text-xl border-b border-dotted outline-none w-full">
@@ -31,8 +32,12 @@
         </form>
         <% items.map(function(item) { %>
           <ul id="item-list">
-            <li>
+            <li class="text-xl flex justify-between items-center">
               <%=item.reja %>
+              <span class="flex gap-3 items-center justify-between">
+                <i class="fa-solid fa-trash-can text-sm cursor-pointer text-red-600 delete-button" data-id="<%=item._id %>"></i>
+                <i class="fa-solid fa-pen text-sm cursor-pointer text-blue-800" data-id="<%=item._id %>"></i>
+              </span>
             </li>
           </ul>
           <% }) %>
