@@ -33,15 +33,18 @@
         <% items.map(function(item) { %>
           <ul id="item-list">
             <li class="text-xl flex justify-between items-center">
-              <%=item.reja %>
+              <span class="item-text">
+                <%=item.reja %>
+              </span>
               <span class="flex gap-3 items-center justify-between">
                 <i class="fa-solid fa-trash-can text-sm cursor-pointer text-red-600 delete-button" data-id="<%=item._id %>"></i>
-                <i class="fa-solid fa-pen text-sm cursor-pointer text-blue-800" data-id="<%=item._id %>"></i>
+                <i class="fa-solid fa-pen text-sm cursor-pointer text-blue-800 edit-button" data-id="<%=item._id %>"></i>
               </span>
             </li>
           </ul>
           <% }) %>
-      </div>
+          <button class="delete-all px-2 border-none bg-orange-600 text-white uppercase cursor-pointer mt-8">Delete All Items</button>
+        </div>
     </div>
   </div>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

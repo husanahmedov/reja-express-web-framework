@@ -4,7 +4,7 @@ function itemTemplate(data) {
   console.log(data);
 
   return `
-          <li class="text-xl">
+          <li class="text-xl item-text">
               ${data.reja}
               <span class="flex gap-3 items-center justify-between">
                 <i class="fa-solid fa-trash-can text-sm cursor-pointer text-red-600 delete-button" data-id="${data._id}"></i>
@@ -42,5 +42,35 @@ document.addEventListener("click", (event) => {
         })
         .catch((error) => {});
     }
+  }
+
+  if (event.target.classList.contains("edit-button")) {
+    let userInput = prompt(
+      "Qiymat kiriting: ",
+      event.target.parentElement.parentElement.querySelector(".item-text")
+        .innerHTML
+    );
+    if (userInput) {
+      axios
+        .post("/edit-item", {
+          id: event.target.getAttribute("data-id"),
+          new_input: userInput,
+        })
+        .then((response) => {
+          event.target.parentElement.parentElement.querySelector(
+            ".item-text"
+          ).innerHTML = userInput;
+        })
+        .catch((error) => {});
+    }
+  }
+
+  if (event.target.classList.contains("delete-all")) {
+    axios
+      .post("/delete-all", { delete_all: true })
+      .then((response) => {
+        document.location.reload();
+      })
+      .catch((error) => {});
   }
 });

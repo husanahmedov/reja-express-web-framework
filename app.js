@@ -19,15 +19,39 @@ app.post("/create-item", (request, response) => {
   });
 });
 
-// API
-app.post("/delete-item", (request, response) => {
+app.post("/edit-item", async (request, response) => {
   const id = request.body.id;
-  db.collection("plan").deleteOne(
+  db.collection("plan").findOneAndUpdate(
     { _id: new mongodb.ObjectId(id) },
-    function (error, data) {
-      response.json({ result: "success" });
+    { $set: { reja: request.body.new_input } },
+    (error, data) => {
+      if (error) {
+        response.json({ result: "Error" });
+      } else {
+        response.json({ result: "Done" });
+      }
     }
   );
+});
+
+// API
+app.post("/delete-item", async (request, response) => {
+  const id = request.body.id;
+  const result = await db
+    .collection("plan")
+    .deleteOne({ _id: new mongodb.ObjectId(id) });
+  if (result.deletedCount == 0) {
+    throw new Error("Wrong id or there is no collection like this");
+  } else {
+    response.json({ result: "success" });
+  }
+});
+
+app.post("/delete-all", (request, response) => {
+  const deleteAll = request.body.delete_all;
+  db.collection("plan").deleteMany(function () {
+    response.json({ state: "All items are deleted!" });
+  });
 });
 
 // API
@@ -39,7 +63,6 @@ app.get("/", (req, res) => {
         console.log("ERROR: ", err);
         res.end("Something went error");
       } else {
-        console.log(data);
         res.render("reja", { items: data });
       }
     });
