@@ -4,8 +4,10 @@ function itemTemplate(data) {
   console.log(data);
 
   return `
-          <li class="text-xl item-text">
-              ${data.reja}
+          <li class="text-xl flex justify-between items-center">
+              <span class="item-text">
+                ${data.reja}
+              </span>
               <span class="flex gap-3 items-center justify-between">
                 <i class="fa-solid fa-trash-can text-sm cursor-pointer text-red-600 delete-button" data-id="${data._id}"></i>
                 <i class="fa-solid fa-pen text-sm cursor-pointer text-blue-800" data-id="${data._id}"></i>

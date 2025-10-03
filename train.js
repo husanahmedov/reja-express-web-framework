@@ -62,52 +62,77 @@
 
 // console.log(checkContent("salom", "lmosa"));
 
-class Shop {
-  constructor(non, lagmon, cola) {
-    this.products = {
-      non,
-      lagmon,
-      cola,
-    };
-  }
+// class Shop {
+//   constructor(non, lagmon, cola) {
+//     this.products = {
+//       non,
+//       lagmon,
+//       cola,
+//     };
+//   }
 
-  getTime() {
-    const now = new Date();
-    const hours = now.getHours().toString().padStart(2, "0");
-    const minutes = now.getMinutes().toString().padStart(2, "0");
-    return `${hours}:${minutes}`;
-  }
+//   getTime() {
+//     const now = new Date();
+//     const hours = now.getHours().toString().padStart(2, "0");
+//     const minutes = now.getMinutes().toString().padStart(2, "0");
+//     return `${hours}:${minutes}`;
+//   }
 
-  qoldiq() {
-    const time = this.getTime();
-    console.log(
-      `Hozir ${time}da ${this.products.non}ta non, ${this.products.lagmon}ta lagmon va ${this.products.cola}ta cola mavjud!`
-    );
-  }
+//   qoldiq() {
+//     const time = this.getTime();
+//     console.log(
+//       `Hozir ${time}da ${this.products.non}ta non, ${this.products.lagmon}ta lagmon va ${this.products.cola}ta cola mavjud!`
+//     );
+//   }
 
-  sotish(product, amount) {
-    if (this.products[product] < amount) {
-      console.log(`Yetarli ${product} yo‘q!`);
-      return;
-    }
-    this.products[product] -= amount;
-    console.log(`${this.getTime()}da ${amount}ta ${product} sotildi!`);
-  }
+//   sotish(product, amount) {
+//     if (this.products[product] < amount) {
+//       console.log(`Yetarli ${product} yo‘q!`);
+//       return;
+//     }
+//     this.products[product] -= amount;
+//     console.log(`${this.getTime()}da ${amount}ta ${product} sotildi!`);
+//   }
 
-  // Qabul qilish
-  qabul(product, amount) {
-    this.products[product] += amount;
-    console.log(`${this.getTime()}da ${amount}ta ${product} qabul qilindi!`);
+//   // Qabul qilish
+//   qabul(product, amount) {
+//     this.products[product] += amount;
+//     console.log(`${this.getTime()}da ${amount}ta ${product} qabul qilindi!`);
+//   }
+// }
+
+// // TEST
+// const shop = new Shop(4, 5, 2);
+
+// shop.qoldiq();
+// shop.sotish("non", 3);
+// shop.qabul("cola", 4);
+// setTimeout(() => {
+//   shop.qoldiq();
+// }, 100000);
+// vaqt o'tishi kerak
+
+/* MITASK-E 
+Bu yerda prototype orqali barcha stringlar endi reverseString() metodini qabul qila oladi
+1.this -- berilayotgan stringning o'zi
+2.split -- har bir harfni arrayga aylatirib beradi
+3.reverse() -- bu array metodi, arrayga aylangan stringni teskari qilib o'giradi
+4.join("") -- va ularni arraydan chiqarib bir biriga qo'shib beradi
+*/
+console.log("---------- 1-usul ----------");
+String.prototype.reverseString = function () {
+  return this.split("").reverse().join("");
+};
+
+console.log("hello".reverseString());
+
+console.log("---------- 2-usul ----------");
+function getReversed(param) {
+  const arr = [];
+  for (let x = 0; x < param.length; x++) {
+    arr.push(param[x]);
   }
+  return arr.reverse().join("");
 }
 
-// TEST
-const shop = new Shop(4, 5, 2);
-
-shop.qoldiq();
-shop.sotish("non", 3);
-shop.qabul("cola", 4);
-setTimeout(() => {
-  shop.qoldiq();
-}, 100000);
-// vaqt o'tishi kerak
+console.log(getReversed("hello"));

@@ -30,8 +30,8 @@
               class="bg-gray-100 p-1 px-2 cursor-pointer text-xl border-b border-gray-300">Qo'shish</button>
           </div>
         </form>
+        <ul id="item-list">
         <% items.map(function(item) { %>
-          <ul id="item-list">
             <li class="text-xl flex justify-between items-center">
               <span class="item-text">
                 <%=item.reja %>
@@ -41,8 +41,8 @@
                 <i class="fa-solid fa-pen text-sm cursor-pointer text-blue-800 edit-button" data-id="<%=item._id %>"></i>
               </span>
             </li>
+            <% }) %>
           </ul>
-          <% }) %>
           <button class="delete-all px-2 border-none bg-orange-600 text-white uppercase cursor-pointer mt-8">Delete All Items</button>
         </div>
     </div>
