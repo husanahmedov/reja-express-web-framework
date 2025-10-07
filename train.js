@@ -119,20 +119,44 @@ Bu yerda prototype orqali barcha stringlar endi reverseString() metodini qabul q
 3.reverse() -- bu array metodi, arrayga aylangan stringni teskari qilib o'giradi
 4.join("") -- va ularni arraydan chiqarib bir biriga qo'shib beradi
 */
-console.log("---------- 1-usul ----------");
-String.prototype.reverseString = function () {
-  return this.split("").reverse().join("");
-};
+// console.log("---------- 1-usul ----------");
+// String.prototype.reverseString = function () {
+//   return this.split("").reverse().join("");
+// };
 
-console.log("hello".reverseString());
+// console.log("hello".reverseString());
 
-console.log("---------- 2-usul ----------");
-function getReversed(param) {
-  const arr = [];
-  for (let x = 0; x < param.length; x++) {
-    arr.push(param[x]);
+// console.log("---------- 2-usul ----------");
+// function getReversed(param) {
+//   const arr = [];
+//   for (let x = 0; x < param.length; x++) {
+//     arr.push(param[x]);
+//   }
+//   return arr.reverse().join("");
+// }
+
+// console.log(getReversed("hello"));
+
+function checkString(param) {
+  const letters = [];
+  let state = false;
+  for(let i = 0; i < param.length; i++) {
+    letters.push(param[i])
   }
-  return arr.reverse().join("");
+  letters.reverse();
+  while(letters.length !== 0) {
+    const lastChar = letters.pop()
+    letters.forEach((element, index) => {
+      if(element === lastChar) {
+        state = true
+      }
+    })
+    // console.log(letters, lastChar);
+  }
+
+  return state;
+  
 }
 
-console.log(getReversed("hello"));
+
+console.log(checkString("sallom"));
